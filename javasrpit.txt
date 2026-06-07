@@ -1,151 +1,123 @@
-// BOTÓN "VER OFERTAS"
+//////////////////////////////////////////////////////
+// ECOFOOD - JAVASCRIPT PRINCIPAL
+// Controla ofertas, buscador y contadores
+//////////////////////////////////////////////////////
 
-const exploreBtn = document.getElementById("exploreBtn");
+// ==============================
+// LISTA DE RESTAURANTES (DATOS)
+// ==============================
+const restaurants = [
+{
+name: "Pizzería Roma",
+price: "4€ pack sorpresa",
+img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80"
+},
+{
+name: "Panadería Sol",
+price: "3€ bollería",
+img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+},
+{
+name: "Sushi House",
+price: "5€ sushi pack",
+img: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+}
+];
 
-if (exploreBtn) {
-    exploreBtn.addEventListener("click", () => {
-        document.getElementById("offers").scrollIntoView({
-            behavior: "smooth"
+
+// ==============================
+// FUNCION PARA MOSTRAR OFERTAS
+// ==============================
+function render(data) {
+
+    // contenedor donde se muestran las tarjetas
+    const container = document.getElementById("offersContainer");
+
+    // limpiar contenido anterior
+    container.innerHTML = "";
+
+    // crear cada tarjeta de restaurante
+    data.forEach(r => {
+
+        const div = document.createElement("div");
+        div.className = "offer";
+
+        // contenido de la tarjeta
+        div.innerHTML = `
+            <img src="${r.img}" alt="${r.name}">
+            <h3>${r.name}</h3>
+            <p>${r.price}</p>
+        `;
+
+        // click en tarjeta = simulación de reserva
+        div.addEventListener("click", () => {
+            alert("Reserva realizada en: " + r.name);
         });
+
+        // añadir al DOM
+        container.appendChild(div);
     });
 }
 
-// CONTADORES ANIMADOS
 
-function animateCounter(id, target) {
+// ==============================
+// MOSTRAR TODAS LAS OFERTAS AL INICIO
+// ==============================
+render(restaurants);
+
+
+// ==============================
+// BUSCADOR DE RESTAURANTES
+// ==============================
+document.getElementById("search").addEventListener("input", (e) => {
+
+    const value = e.target.value.toLowerCase();
+
+    // filtrar según nombre
+    const filtered = restaurants.filter(r =>
+        r.name.toLowerCase().includes(value)
+    );
+
+    // volver a renderizar resultados filtrados
+    render(filtered);
+});
+
+
+// ==============================
+// CONTADORES ANIMADOS
+// ==============================
+function counter(id, max) {
 
     const element = document.getElementById(id);
+    let i = 0;
 
-    if (!element) return;
+    const interval = setInterval(() => {
 
-    let count = 0;
+        i++;
+        element.textContent = i;
 
-    const increment = Math.ceil(target / 100);
-
-    const timer = setInterval(() => {
-
-        count += increment;
-
-        if (count >= target) {
-            count = target;
-            clearInterval(timer);
+        if (i >= max) {
+            clearInterval(interval);
         }
-
-        element.textContent = count.toLocaleString();
 
     }, 20);
 }
 
-animateCounter("foodCounter", 40000);
-animateCounter("co2Counter", 18000);
-animateCounter("userCounter", 15000);
 
-// ANIMACIÓN AL HACER SCROLL
+// activar contadores
+counter("food", 40000);
+counter("co2", 18000);
+counter("users", 15000);
 
-const revealElements = document.querySelectorAll(
-    ".offer-card, .stat-card, .profile-card, .impact-card"
-);
 
-function revealOnScroll() {
+// ==============================
+// SCROLL SUAVE AL BOTÓN HERO
+// ==============================
+const btn = document.getElementById("btnScroll");
 
-    revealElements.forEach(element => {
-
-        const position = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight - 100;
-
-        if (position < screenPosition) {
-            element.classList.add("show");
-        }
-
+if (btn) {
+    btn.addEventListener("click", () => {
+        document.getElementById("offers")
+        .scrollIntoView({ behavior: "smooth" });
     });
-
 }
-
-window.addEventListener("scroll", revealOnScroll);
-
-revealOnScroll();
-
-// BUSCADOR DE RESTAURANTES
-
-const searchInput = document.getElementById("searchInput");
-
-if (searchInput) {
-
-    searchInput.addEventListener("keyup", () => {
-
-        const filter =
-            searchInput.value.toLowerCase();
-
-        const cards =
-            document.querySelectorAll(".offer-card");
-
-        cards.forEach(card => {
-
-            const text =
-                card.textContent.toLowerCase();
-
-            if (text.includes(filter)) {
-
-                card.style.display = "block";
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
-
-}
-
-// MENÚ INFERIOR ACTIVO
-
-const navButtons =
-    document.querySelectorAll(".bottom-nav button");
-
-navButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        navButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-    });
-
-});
-
-// RESERVAR OFERTA
-
-const offers =
-    document.querySelectorAll(".offer-card");
-
-offers.forEach(card => {
-
-    card.addEventListener("click", () => {
-
-        const restaurant =
-            card.querySelector("h3").textContent;
-
-        alert(
-            "Has reservado una oferta en " +
-            restaurant
-        );
-
-    });
-
-});
-
-// MENSAJE DE BIENVENIDA
-
-window.addEventListener("load", () => {
-
-    console.log(
-        "EcoFood cargado correctamente"
-    );
-
-});
