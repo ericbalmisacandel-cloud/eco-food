@@ -1,80 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoFood</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFood</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-<div class="logo">EcoFood</div>
-<nav>
-<ul>
-<li><a href="#offers">Ofertas</a></li>
-<li><a href="#impact">Impacto</a></li>
-<li><a href="#profile">Perfil</a></li>
-</ul>
-</nav>
-</header>
+    <!-- CABECERA -->
 
-<section class="hero">
-<div>
-<h1>Salva comida. Ayuda al planeta.</h1>
-<button id="btnScroll">Ver ofertas</button>
-</div>
-</section>
+    <header class="header">
 
-<section class="search">
-<input type="text" id="search" placeholder="Buscar restaurante...">
-</section>
+        <div class="logo">
+            EcoFood
+        </div>
 
-<section class="stats">
-<div class="card"><h2 id="food">0</h2><p>Kg comida</p></div>
-<div class="card"><h2 id="co2">0</h2><p>CO₂ evitado</p></div>
-<div class="card"><h2 id="users">0</h2><p>Usuarios</p></div>
-</section>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#offers">Ofertas</a></li>
+                <li><a href="#impact">Impacto</a></li>
+                <li><a href="#profile">Perfil</a></li>
+            </ul>
+        </nav>
 
-<section id="offers">
-<h2>Ofertas</h2>
-<div class="offers-container" id="offersContainer"></div>
-</section>
+    </header>
 
-<section class="impact" id="impact">
-<h2>Impacto ambiental</h2>
-<div class="box">Reducimos el desperdicio de comida y CO₂.</div>
-</section>
+    <!-- HERO -->
 
-<section class="profile" id="profile">
-<h2>Perfil</h2>
-<div class="profile-box">
-Reservas: 12<br>
-Comida salvada: 35kg
-</div>
-</section>
+    <section id="inicio" class="hero">
 
-<section class="contact">
-<h2>Contacto</h2>
-<form>
-<input type="text" placeholder="Nombre">
-<input type="email" placeholder="Correo">
-<textarea placeholder="Mensaje"></textarea>
-<button>Enviar</button>
-</form>
-</section>
+        <div class="hero-content">
 
-<nav class="bottom-nav">
-<button>Inicio</button>
-<button>Ofertas</button>
-<button>Perfil</button>
-</nav>
+            <h1>Salva comida. Ayuda al planeta.</h1>
 
-<script src="script.js"></script>
+            <p>
+                Encuentra ofertas de comida de restaurantes y comercios cercanos
+                antes de que se desperdicien.
+            </p>
+
+            <button id="exploreBtn">
+                Ver ofertas
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- BUSCADOR -->
+
+    <section class="search-section">
+
+        <input type="text"
+               id="searchInput"
+               placeholder="Buscar restaurante...">
+
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h2 id="foodCounter">0</h2>
+
+            <p>Kg de comida salvados</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 id="co2Counter">0</h2>
+
+            <p>Kg de CO₂ evitados</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 id="userCounter">0</h2>
+
+            <p>Usuarios activos</p>
+
+        </div>
+
+    </section>
+
+    <!-- OFERTAS -->
+
+    <section id="offers">
+
+        <h2>Ofertas destacadas</h2>
+
+        <div class="cards">
+
+            <div class="offer-card">
+
+                <img src="imagenes/pizza.jpg" alt="Pizza">
+
+                <h3>Pizzería Roma</h3>
+
+                <p>Lote sorpresa · 4€</p>
+
+                <span>⭐ 4.8</span>
+
+            </div>
+
+            <div class="offer-card">
+
+                <img src="imagenes/bakery.jpg" alt="Panadería">
+
+                <h3>Panadería Sol</h3>
+
+                <p>Pack de bollería · 3€</p>
+
+                <span>⭐ 4.9</span>
+
+            </div>
+
+            <div class="offer-card">
+
+                <img src="imagenes/sushi.jpg" alt="Sushi">
+
+                <h3>Sushi House</h3>
+
+                <p>Pack sushi · 5€</p>
+
+                <span>⭐ 4.7</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- IMPACTO -->
+
+    <section id="impact" class="impact">
+
+        <h2>Impacto ambiental</h2>
+
+        <div class="impact-card">
+
+            <p>
+                Gracias a nuestros usuarios se han salvado miles de kilos de comida
+                y reducido las emisiones de CO₂.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERFIL -->
+
+    <section id="profile">
+
+        <h2>Mi perfil</h2>
+
+        <div class="profile-card">
+
+            <h3>Usuario EcoFood</h3>
+
+            <p>Reservas realizadas: 12</p>
+
+            <p>Comida salvada: 35 kg</p>
+
+            <p>CO₂ evitado: 18 kg</p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACTO -->
+
+    <section class="contact">
+
+        <h2>Contacto</h2>
+
+        <form>
+
+            <input type="text" placeholder="Nombre">
+
+            <input type="email" placeholder="Correo electrónico">
+
+            <textarea placeholder="Escribe tu mensaje"></textarea>
+
+            <button type="submit">Enviar</button>
+
+        </form>
+
+    </section>
+
+    <!-- MENÚ INFERIOR -->
+
+    <nav class="bottom-nav">
+
+        <button class="active">
+            Inicio
+        </button>
+
+        <button>
+            Ofertas
+        </button>
+
+        <button>
+            Favoritos
+        </button>
+
+        <button>
+            Perfil
+        </button>
+
+    </nav>
+
+    <script src="script.js"></script>
 
 </body>
+
+</html>
 </html>
