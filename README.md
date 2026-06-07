@@ -1,11 +1,11 @@
-EcoFood
-Descripción del proyecto
+###EcoFood
+#Descripción del proyecto
 
 EcoFood es una aplicación web creada con el objetivo de reducir el desperdicio alimentario. La idea consiste en conectar a los usuarios con restaurantes, panaderías y otros establecimientos que tienen excedentes de comida al final del día.
 
 De esta forma, los usuarios pueden comprar estos productos a un precio más bajo y los comercios evitan tirar alimentos que todavía están en buen estado.
 
-Objetivos
+#Objetivos
 
 Los objetivos principales del proyecto son:
 
@@ -25,26 +25,26 @@ EcoFood/
 ├── README.md
 │
 └── imagenes/
-Archivos principales
+#Archivos principales
 
-index.html
+#index.html
 
 Contiene la estructura principal de la página web.
 
-style.css
+#style.css
 
 Define el diseño, los colores y la apariencia visual de la aplicación.
 
-script.js
+#script.js
 
 Incluye las funcionalidades desarrolladas con JavaScript y las animaciones de la página.
 
-imagenes/
+#imagenes/
 
 Carpeta destinada a almacenar las imágenes utilizadas en el proyecto.
 Funcionalidades
 
-La aplicación permite:
+#La aplicación permite:
 
 Buscar ofertas de comida disponibles.
 Consultar establecimientos cercanos.
@@ -54,7 +54,7 @@ Consultar estadísticas relacionadas con el impacto ambiental.
 Acceder al perfil del usuario.
 Tecnologías utilizadas
 
-Para desarrollar este proyecto se han utilizado:
+#Para desarrollar este proyecto se han utilizado:
 
 HTML
 CSS
@@ -63,7 +63,7 @@ GitHub
 GitHub Pages
 Posibles mejoras futuras
 
-En futuras versiones se podrían añadir nuevas funciones como:
+#En futuras versiones se podrían añadir nuevas funciones como:
 
 Sistema de inicio de sesión.
 Geolocalización en tiempo real.
