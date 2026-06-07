@@ -1,1 +1,151 @@
+// BOTÓN "VER OFERTAS"
 
+const exploreBtn = document.getElementById("exploreBtn");
+
+if (exploreBtn) {
+    exploreBtn.addEventListener("click", () => {
+        document.getElementById("offers").scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+}
+
+// CONTADORES ANIMADOS
+
+function animateCounter(id, target) {
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    let count = 0;
+
+    const increment = Math.ceil(target / 100);
+
+    const timer = setInterval(() => {
+
+        count += increment;
+
+        if (count >= target) {
+            count = target;
+            clearInterval(timer);
+        }
+
+        element.textContent = count.toLocaleString();
+
+    }, 20);
+}
+
+animateCounter("foodCounter", 40000);
+animateCounter("co2Counter", 18000);
+animateCounter("userCounter", 15000);
+
+// ANIMACIÓN AL HACER SCROLL
+
+const revealElements = document.querySelectorAll(
+    ".offer-card, .stat-card, .profile-card, .impact-card"
+);
+
+function revealOnScroll() {
+
+    revealElements.forEach(element => {
+
+        const position = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight - 100;
+
+        if (position < screenPosition) {
+            element.classList.add("show");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+// BUSCADOR DE RESTAURANTES
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+
+    searchInput.addEventListener("keyup", () => {
+
+        const filter =
+            searchInput.value.toLowerCase();
+
+        const cards =
+            document.querySelectorAll(".offer-card");
+
+        cards.forEach(card => {
+
+            const text =
+                card.textContent.toLowerCase();
+
+            if (text.includes(filter)) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+}
+
+// MENÚ INFERIOR ACTIVO
+
+const navButtons =
+    document.querySelectorAll(".bottom-nav button");
+
+navButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        navButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+    });
+
+});
+
+// RESERVAR OFERTA
+
+const offers =
+    document.querySelectorAll(".offer-card");
+
+offers.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const restaurant =
+            card.querySelector("h3").textContent;
+
+        alert(
+            "Has reservado una oferta en " +
+            restaurant
+        );
+
+    });
+
+});
+
+// MENSAJE DE BIENVENIDA
+
+window.addEventListener("load", () => {
+
+    console.log(
+        "EcoFood cargado correctamente"
+    );
+
+});
