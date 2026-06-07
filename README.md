@@ -1,75 +1,53 @@
-###EcoFood
-#Descripción del proyecto
+# EcoFood
 
-EcoFood es una aplicación web creada con el objetivo de reducir el desperdicio alimentario. La idea consiste en conectar a los usuarios con restaurantes, panaderías y otros establecimientos que tienen excedentes de comida al final del día.
+## Què és aquest repositori?
 
-De esta forma, los usuarios pueden comprar estos productos a un precio más bajo y los comercios evitan tirar alimentos que todavía están en buen estado.
+En aquest repositori hi ha el meu projecte web anomenat EcoFood. És una pàgina creada amb HTML, CSS i JavaScript.
 
-#Objetivos
+La idea del projecte és simular una aplicació que ajuda a reduir el malbaratament de menjar, connectant persones amb ofertes de restaurants i comerços que tenen excedents de menjar.
 
-Los objetivos principales del proyecto son:
+---
 
-Reducir el desperdicio de alimentos.
-Concienciar sobre la sostenibilidad.
-Facilitar el acceso a comida de calidad a precios reducidos.
-Ayudar a los comercios a aprovechar mejor sus productos.
-Contenido del repositorio
+## De què tracta el projecte?
 
-Este repositorio contiene todos los archivos necesarios para el desarrollo de la aplicación web.
+EcoFood és una web on pots:
 
-EcoFood/
-│
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-│
-└── imagenes/
-#Archivos principales
+- Veure ofertes de menjar de diferents llocs  
+- Buscar restaurants amb un cercador  
+- Simular que reserves ofertes  
+- Veure estadístiques de menjar salvat i CO₂ reduït  
+- Navegar per una pàgina moderna i fàcil d’utilitzar  
 
-#index.html
+---
 
-Contiene la estructura principal de la página web.
+## Quin és l’objectiu?
 
-#style.css
+L’objectiu d’aquest projecte és conscienciar sobre el malbaratament alimentari i veure com la tecnologia pot ajudar a reduir-lo.
 
-Define el diseño, los colores y la apariencia visual de la aplicación.
+També m’ha servit per practicar:
+- HTML (estructura de la pàgina)
+- CSS (disseny)
+- JavaScript (interactivitat)
 
-#script.js
+---
 
-Incluye las funcionalidades desarrolladas con JavaScript y las animaciones de la página.
+## Tecnologies utilitzades
 
-#imagenes/
+- HTML
+- CSS
+- JavaScript
 
-Carpeta destinada a almacenar las imágenes utilizadas en el proyecto.
-Funcionalidades
+---
 
-#La aplicación permite:
+## Què hi ha al repositori?
 
-Buscar ofertas de comida disponibles.
-Consultar establecimientos cercanos.
-Visualizar información sobre los lotes disponibles.
-Gestionar reservas.
-Consultar estadísticas relacionadas con el impacto ambiental.
-Acceder al perfil del usuario.
-Tecnologías utilizadas
+- `index.html` → la pàgina principal  
+- `style.css` → l’estil de la web (si està separat)  
+- `script.js` → les funcionalitats  
+- `imagenes/` → imatges dels restaurants  
 
-#Para desarrollar este proyecto se han utilizado:
+---
 
-HTML
-CSS
-JavaScript
-GitHub
-GitHub Pages
-Posibles mejoras futuras
+## Fet per
 
-#En futuras versiones se podrían añadir nuevas funciones como:
-
-Sistema de inicio de sesión.
-Geolocalización en tiempo real.
-Sistema de pagos integrado.
-Valoraciones de usuarios.
-Notificaciones personalizadas.
-Autor
-
-Proyecto realizado como práctica de desarrollo web dentro del módulo de programación y desarrollo de aplicaciones.
+Aquest projecte ha estat fet com a treball escolar per aprendre a crear pàgines web i entendre millor la programació.
