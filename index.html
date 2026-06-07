@@ -7,133 +7,70 @@
 
 <title>EcoFood</title>
 
-<!-- Fuente -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- CSS externo -->
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
 <div class="logo">EcoFood</div>
 
 <nav>
 <ul>
-<li><a href="#offers">Ofertas</a></li>
+<li><a href="#all">Todos</a></li>
 <li><a href="#impact">Impacto</a></li>
 <li><a href="#profile">Perfil</a></li>
 </ul>
 </nav>
 </header>
 
-<!-- ================= HERO ================= -->
 <section class="hero">
-
 <div>
 <h1>Salva comida. Ayuda al planeta.</h1>
-
-<p>
-Plataforma para reducir el desperdicio alimentario conectando usuarios con ofertas de restaurantes.
-</p>
-
-<button id="btnScroll">Ver ofertas</button>
+<p>Plataforma para reducir el desperdicio alimentario.</p>
+<button id="btnScroll">Ver restaurantes</button>
 </div>
-
 </section>
 
-<!-- ================= BUSCADOR ================= -->
 <section class="search">
 <input type="text" id="search" placeholder="Buscar restaurante...">
 </section>
 
-<!-- ================= ESTADÍSTICAS ================= -->
 <section class="stats">
-
-<div class="card">
-<h2 id="food">0</h2>
-<p>Kg comida salvada</p>
-</div>
-
-<div class="card">
-<h2 id="co2">0</h2>
-<p>CO₂ evitado</p>
-</div>
-
-<div class="card">
-<h2 id="users">0</h2>
-<p>Usuarios activos</p>
-</div>
-
+<div class="card"><h2 id="food">0</h2><p>Kg comida</p></div>
+<div class="card"><h2 id="co2">0</h2><p>CO₂</p></div>
+<div class="card"><h2 id="users">0</h2><p>Usuarios</p></div>
 </section>
 
-<!-- ================= OFERTAS ================= -->
-<section id="offers">
-
-<h2>Ofertas disponibles</h2>
-
-<!-- Aquí se generan las tarjetas desde JavaScript -->
-<div class="offers-container" id="offersContainer"></div>
-
-</section>
-
-<!-- ================= IMPACTO ================= -->
-<section id="impact" class="impact">
-
-<h2>Impacto ambiental</h2>
-
-<div class="box">
-Reducimos el desperdicio de alimentos y las emisiones de CO₂ gracias a la reutilización de comida.
-</div>
-
-</section>
-
-<!-- ================= PERFIL ================= -->
-<section id="profile" class="profile">
-
-<h2>Perfil de usuario</h2>
-
-<div class="profile-box">
-Reservas realizadas: 12<br>
-Comida salvada: 35 kg<br>
-Nivel Eco: Intermedio
-</div>
-
-</section>
-
-<!-- ================= CONTACTO ================= -->
-<section class="contact">
-
-<h2>Contacto</h2>
-
-<form>
-<input type="text" placeholder="Nombre">
-<input type="email" placeholder="Correo electrónico">
-<textarea placeholder="Escribe tu mensaje"></textarea>
-<button type="submit">Enviar</button>
-</form>
-
-</section>
-
-<!-- ================= MENÚ INFERIOR ================= -->
-<nav class="bottom-nav">
-<button>Inicio</button>
-<button>Ofertas</button>
-<button>Perfil</button>
-</nav>
-
-<!-- ================= JAVASCRIPT ================= -->
-<script src="script.js"></script>
-
-</body>
-
-</html>
-<section id="all-restaurants">
-
+<!-- APARTADO TODOS LOS RESTAURANTES -->
+<section id="all">
 <h2>Todos los restaurantes</h2>
 
 <div class="offers-container" id="offersContainer"></div>
-
 </section>
+
+<section id="impact" class="impact">
+<h2>Impacto ambiental</h2>
+<div class="box">Reducimos el desperdicio de comida.</div>
+</section>
+
+<section id="profile" class="profile">
+<h2>Perfil</h2>
+<div class="profile-box">
+Reservas: 12<br>
+Comida salvada: 35kg
+</div>
+</section>
+
+<nav class="bottom-nav">
+<button>Inicio</button>
+<button>Todos</button>
+<button>Perfil</button>
+</nav>
+
+<script src="script.js"></script>
+
+</body>
+</html>
