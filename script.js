@@ -1,10 +1,10 @@
+
 /* =========================================
-   ECOFOOD - SCRIPT PRINCIPAL
-   App simulada completa (nivell alt)
+   ECOFOOD - SCRIPT PRO (MEJOR VISUAL)
 ========================================= */
 
 /* =========================
-   ESTAT GLOBAL
+   ESTADO GLOBAL
 ========================= */
 
 let currentScreen = "splash";
@@ -12,8 +12,6 @@ let selectedOffer = null;
 let quantity = 1;
 
 let user = {
-    name: "",
-    email: "",
     favorites: [],
     reservations: [],
     stats: {
@@ -24,20 +22,49 @@ let user = {
 };
 
 /* =========================
-   DADES SIMULADES (100 OFERTES)
+   IMÁGENES REALES
+========================= */
+
+const images = [
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba",
+    "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe",
+    "https://images.unsplash.com/photo-1551218808-94e220e084d2",
+    "https://images.unsplash.com/photo-1550547660-d9450f859349"
+];
+
+/* =========================
+   DADES OFERTES (MEJORADAS)
 ========================= */
 
 const offers = Array.from({ length: 100 }, (_, i) => {
+
     const types = ["Restaurant", "Fleca", "Supermercat"];
-    const names = ["EcoFood", "Green Bite", "Food Save", "Fresh Deal", "Zero Waste Spot"];
+
+    const names = [
+        "EcoFood",
+        "Green Bite",
+        "Fresh Save",
+        "Zero Waste",
+        "Food Rescue"
+    ];
+
+    const type = types[i % types.length];
 
     return {
         id: i,
         name: `${names[i % names.length]} ${i + 1}`,
-        type: types[i % 3],
-        description: "Lot de menjar d'alta qualitat amb descompte.",
+        type: type,
+        description: "Lot sorpresa de menjar d'alta qualitat amb descompte.",
         price: (Math.random() * 10 + 2).toFixed(2),
-        image: "https://via.placeholder.com/300x200?text=EcoFood"
+        image: images[i % images.length],
+        color:
+            type === "Restaurant"
+                ? "#ff6b6b"
+                : type === "Fleca"
+                ? "#feca57"
+                : "#1dd1a1"
     };
 });
 
@@ -49,13 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showScreen("splash");
 
-    document.getElementById("startApp").onclick = () => {
-        showScreen("onboarding");
-    };
-
-    document.getElementById("goLogin").onclick = () => {
-        showScreen("login");
-    };
+    document.getElementById("startApp").onclick = () => showScreen("onboarding");
+    document.getElementById("goLogin").onclick = () => showScreen("login");
 
     setupAuth();
     setupLocation();
@@ -64,11 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setupQuantity();
     setupPayment();
     setupBottomNav();
-    setupSettings();
 });
 
 /* =========================
-   CANVI DE PANTALLA
+   CAMBIO DE PANTALLA
 ========================= */
 
 function showScreen(id) {
@@ -83,40 +104,25 @@ function showScreen(id) {
 }
 
 /* =========================
-   LOGIN / REGISTER
+   AUTH SIMULADO
 ========================= */
 
 function setupAuth() {
 
     document.getElementById("loginBtn").onclick = () => {
-        const email = document.getElementById("loginEmail").value;
-        const pass = document.getElementById("loginPassword").value;
-
-        if (email && pass) {
-            user.email = email;
-            showScreen("location");
-        }
-    };
-
-    document.getElementById("openRegister").onclick = () => {
-        showScreen("register");
+        showScreen("location");
     };
 
     document.getElementById("registerBtn").onclick = () => {
-        const name = document.getElementById("registerName").value;
-
-        user.name = name;
-
         showScreen("login");
     };
 }
 
 /* =========================
-   UBICACIÓ SIMULADA
+   UBICACIÓN
 ========================= */
 
 function setupLocation() {
-
     document.getElementById("allowLocation").onclick = () => {
         showScreen("home");
         renderOffers(offers);
@@ -124,7 +130,7 @@ function setupLocation() {
 }
 
 /* =========================
-   HOME + OFERTES
+   HOME + BUSCADOR + FILTROS
 ========================= */
 
 function setupHome() {
@@ -132,6 +138,7 @@ function setupHome() {
     const search = document.getElementById("searchInput");
 
     search.addEventListener("input", () => {
+
         const value = search.value.toLowerCase();
 
         const filtered = offers.filter(o =>
@@ -142,6 +149,7 @@ function setupHome() {
     });
 
     document.querySelectorAll(".filter-btn").forEach(btn => {
+
         btn.onclick = () => {
 
             document.querySelectorAll(".filter-btn")
@@ -160,12 +168,13 @@ function setupHome() {
     });
 }
 
-/* Render d'ofertes */
+/* =========================
+   RENDER OFERTES (MEJOR VISUAL)
+========================= */
 
 function renderOffers(data) {
 
     const container = document.getElementById("offersContainer");
-
     container.innerHTML = "";
 
     data.slice(0, 20).forEach(offer => {
@@ -173,16 +182,35 @@ function renderOffers(data) {
         const div = document.createElement("div");
         div.className = "offer-card";
 
+        div.style.borderLeft = `6px solid ${offer.color}`;
+
         div.innerHTML = `
-            <img src="${offer.image}">
-            <h4>${offer.name}</h4>
-            <p>${offer.price} €</p>
-            <button>Veure</button>
+            <div style="position:relative">
+                <img src="${offer.image}" style="width:100%; border-radius:10px;">
+                <span style="
+                    position:absolute;
+                    top:10px;
+                    left:10px;
+                    background:${offer.color};
+                    color:white;
+                    padding:5px 10px;
+                    border-radius:20px;
+                    font-size:12px;
+                ">
+                    ${offer.type}
+                </span>
+            </div>
+
+            <h4 style="margin-top:10px">${offer.name}</h4>
+
+            <p style="opacity:0.7">${offer.description}</p>
+
+            <p style="font-weight:bold">${offer.price} €</p>
+
+            <button>Veure oferta</button>
         `;
 
-        div.querySelector("button").onclick = () => {
-            openOffer(offer);
-        };
+        div.querySelector("button").onclick = () => openOffer(offer);
 
         container.appendChild(div);
     });
@@ -223,22 +251,18 @@ function setupQuantity() {
 
     document.getElementById("minusBtn").onclick = () => {
         if (quantity > 1) quantity--;
-        updateQuantity();
+        document.getElementById("quantityValue").textContent = quantity;
     };
 
     document.getElementById("plusBtn").onclick = () => {
         quantity++;
-        updateQuantity();
+        document.getElementById("quantityValue").textContent = quantity;
     };
 
     document.getElementById("continuePayment").onclick = () => {
         renderPayment();
         showScreen("payment");
     };
-}
-
-function updateQuantity() {
-    document.getElementById("quantityValue").textContent = quantity;
 }
 
 /* =========================
@@ -249,17 +273,15 @@ function setupPayment() {
 
     document.getElementById("payNow").onclick = () => {
 
-        const reservation = {
+        user.reservations.push({
             ...selectedOffer,
             quantity,
             date: new Date().toLocaleString()
-        };
-
-        user.reservations.push(reservation);
+        });
 
         user.stats.food += quantity * 0.5;
         user.stats.co2 += quantity * 1.2;
-        user.stats.money += quantity * parseFloat(selectedOffer.price);
+        user.stats.money += quantity * selectedOffer.price;
 
         quantity = 1;
 
@@ -274,9 +296,7 @@ function setupPayment() {
 
 function renderPayment() {
 
-    const container = document.getElementById("paymentSummary");
-
-    container.innerHTML = `
+    document.getElementById("paymentSummary").innerHTML = `
         <p><b>${selectedOffer.name}</b></p>
         <p>Quantitat: ${quantity}</p>
         <p>Total: ${(selectedOffer.price * quantity).toFixed(2)} €</p>
@@ -290,13 +310,11 @@ function renderPayment() {
 function renderReservations() {
 
     const container = document.getElementById("reservationsContainer");
-
     container.innerHTML = "";
 
     user.reservations.forEach(r => {
 
         const div = document.createElement("div");
-
         div.className = "reservation-card";
 
         div.innerHTML = `
@@ -310,22 +328,7 @@ function renderReservations() {
 }
 
 /* =========================
-   FAVORITS
-========================= */
-
-function toggleFavorite(offer) {
-
-    const index = user.favorites.findIndex(f => f.id === offer.id);
-
-    if (index === -1) {
-        user.favorites.push(offer);
-    } else {
-        user.favorites.splice(index, 1);
-    }
-}
-
-/* =========================
-   BOTTOM NAV
+   NAV INFERIOR
 ========================= */
 
 function setupBottomNav() {
@@ -338,7 +341,6 @@ function setupBottomNav() {
 
             if (screen === "reservations") renderReservations();
             if (screen === "favorites") renderFavorites();
-            if (screen === "profile") renderStats();
 
             showScreen(screen);
         };
@@ -352,13 +354,11 @@ function setupBottomNav() {
 function renderFavorites() {
 
     const container = document.getElementById("favoritesContainer");
-
     container.innerHTML = "";
 
     user.favorites.forEach(f => {
 
         const div = document.createElement("div");
-
         div.className = "favorite-card";
 
         div.innerHTML = `
@@ -368,33 +368,4 @@ function renderFavorites() {
 
         container.appendChild(div);
     });
-}
-
-/* =========================
-   ESTADÍSTIQUES
-========================= */
-
-function renderStats() {
-
-    document.getElementById("foodSaved").textContent =
-        user.stats.food.toFixed(1) + " kg";
-
-    document.getElementById("co2Saved").textContent =
-        user.stats.co2.toFixed(1) + " kg";
-
-    document.getElementById("moneySaved").textContent =
-        user.stats.money.toFixed(2) + " €";
-}
-
-/* =========================
-   AJUSTOS
-========================= */
-
-function setupSettings() {
-
-    const darkToggle = document.getElementById("darkModeToggle");
-
-    darkToggle.onchange = () => {
-        document.body.classList.toggle("dark-mode");
-    };
 }
