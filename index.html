@@ -1,76 +1,607 @@
+```html
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="ca">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFood - Salva menjar, ajuda el planeta</title>
 
-<title>EcoFood</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-<div class="logo">EcoFood</div>
+<!-- ========================================= -->
+<!-- SPLASH SCREEN -->
+<!-- ========================================= -->
 
-<nav>
-<ul>
-<li><a href="#all">Todos</a></li>
-<li><a href="#impact">Impacto</a></li>
-<li><a href="#profile">Perfil</a></li>
-</ul>
-</nav>
-</header>
+<section id="splash" class="screen active-screen">
 
-<section class="hero">
-<div>
-<h1>Salva comida. Ayuda al planeta.</h1>
-<p>Plataforma para reducir el desperdicio alimentario.</p>
-<button id="btnScroll">Ver restaurantes</button>
-</div>
+    <div class="splash-content">
+
+        <div class="logo-container">
+            🌱
+        </div>
+
+        <h1>EcoFood</h1>
+
+        <p>Salva menjar. Estalvia diners.</p>
+
+        <button id="startApp">
+            Començar
+        </button>
+
+    </div>
+
 </section>
 
-<section class="search">
-<input type="text" id="search" placeholder="Buscar restaurante...">
+<!-- ========================================= -->
+<!-- ONBOARDING -->
+<!-- ========================================= -->
+
+<section id="onboarding" class="screen">
+
+    <div class="container">
+
+        <h2>Junts reduïm el malbaratament alimentari</h2>
+
+        <p>
+            Troba ofertes de menjar a prop teu
+            i ajuda el planeta.
+        </p>
+
+        <div class="onboarding-image">
+            🛍️
+        </div>
+
+        <button id="goLogin">
+            Següent
+        </button>
+
+    </div>
+
 </section>
 
-<section class="stats">
-<div class="card"><h2 id="food">0</h2><p>Kg comida</p></div>
-<div class="card"><h2 id="co2">0</h2><p>CO₂</p></div>
-<div class="card"><h2 id="users">0</h2><p>Usuarios</p></div>
+<!-- ========================================= -->
+<!-- LOGIN -->
+<!-- ========================================= -->
+
+<section id="login" class="screen">
+
+    <div class="container auth-container">
+
+        <h2>Iniciar sessió</h2>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Correu electrònic"
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Contrasenya"
+        >
+
+        <button id="loginBtn">
+            Entrar
+        </button>
+
+        <p>
+            No tens compte?
+            <span class="link" id="openRegister">
+                Registra't
+            </span>
+        </p>
+
+    </div>
+
 </section>
 
-<!-- APARTADO TODOS LOS RESTAURANTES -->
-<section id="all">
-<h2>Todos los restaurantes</h2>
+<!-- ========================================= -->
+<!-- REGISTER -->
+<!-- ========================================= -->
 
-<div class="offers-container" id="offersContainer"></div>
+<section id="register" class="screen">
+
+    <div class="container auth-container">
+
+        <h2>Crear compte</h2>
+
+        <input
+            type="text"
+            id="registerName"
+            placeholder="Nom"
+        >
+
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="Correu electrònic"
+        >
+
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Contrasenya"
+        >
+
+        <input
+            type="password"
+            id="registerPassword2"
+            placeholder="Confirmar contrasenya"
+        >
+
+        <label class="checkbox">
+
+            <input type="checkbox">
+
+            Accepto els termes i condicions
+
+        </label>
+
+        <button id="registerBtn">
+            Crear compte
+        </button>
+
+    </div>
+
 </section>
 
-<section id="impact" class="impact">
-<h2>Impacto ambiental</h2>
-<div class="box">Reducimos el desperdicio de comida.</div>
+<!-- ========================================= -->
+<!-- UBICACIÓ -->
+<!-- ========================================= -->
+
+<section id="location" class="screen">
+
+    <div class="container">
+
+        <h2>Permetre ubicació</h2>
+
+        <div class="map-placeholder">
+            📍
+        </div>
+
+        <p>
+            Necessitem la teva ubicació per
+            mostrar-te ofertes properes.
+        </p>
+
+        <button id="allowLocation">
+            Permetre ubicació
+        </button>
+
+    </div>
+
 </section>
 
-<section id="profile" class="profile">
-<h2>Perfil</h2>
-<div class="profile-box">
-Reservas: 12<br>
-Comida salvada: 35kg
-</div>
+<!-- ========================================= -->
+<!-- HOME -->
+<!-- ========================================= -->
+
+<section id="home" class="screen">
+
+    <header class="header">
+
+        <div>
+
+            <h2>Hola!</h2>
+
+            <p>Què vols salvar avui?</p>
+
+        </div>
+
+    </header>
+
+    <!-- BUSCADOR -->
+
+    <section class="search-section">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar ofertes..."
+        >
+
+    </section>
+
+    <!-- FILTRES -->
+
+    <section class="filters">
+
+        <button class="filter-btn active-filter">
+            Tots
+        </button>
+
+        <button class="filter-btn">
+            Restaurants
+        </button>
+
+        <button class="filter-btn">
+            Fleques
+        </button>
+
+        <button class="filter-btn">
+            Supermercats
+        </button>
+
+    </section>
+
+    <!-- OFERTES -->
+
+    <section class="offers-section">
+
+        <h3>Ofertes a prop teu</h3>
+
+        <div id="offersContainer">
+
+        </div>
+
+    </section>
+
 </section>
+
+<!-- ========================================= -->
+<!-- DETALL OFERTA -->
+<!-- ========================================= -->
+
+<section id="offerDetail" class="screen">
+
+    <div class="container">
+
+        <button class="backBtn">
+            ← Tornar
+        </button>
+
+        <img
+            id="detailImage"
+            src=""
+            alt="Oferta"
+            class="detail-image"
+        >
+
+        <h2 id="detailName"></h2>
+
+        <p id="detailDescription"></p>
+
+        <h3 id="detailPrice"></h3>
+
+        <button id="reserveNow">
+            Reservar ara
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- QUANTITAT -->
+<!-- ========================================= -->
+
+<section id="quantity" class="screen">
+
+    <div class="container">
+
+        <h2>Selecciona quantitat</h2>
+
+        <div class="quantity-selector">
+
+            <button id="minusBtn">-</button>
+
+            <span id="quantityValue">1</span>
+
+            <button id="plusBtn">+</button>
+
+        </div>
+
+        <button id="continuePayment">
+            Continuar
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PAGAMENT -->
+<!-- ========================================= -->
+
+<section id="payment" class="screen">
+
+    <div class="container">
+
+        <h2>Resum i pagament</h2>
+
+        <div id="paymentSummary">
+
+        </div>
+
+        <h3>Mètode de pagament</h3>
+
+        <label>
+            <input type="radio" name="payment" checked>
+            Targeta
+        </label>
+
+        <label>
+            <input type="radio" name="payment">
+            PayPal
+        </label>
+
+        <label>
+            <input type="radio" name="payment">
+            Bizum
+        </label>
+
+        <button id="payNow">
+            Pagar
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONFIRMACIÓ -->
+<!-- ========================================= -->
+
+<section id="confirmation" class="screen">
+
+    <div class="container">
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+        <h2>Reserva confirmada!</h2>
+
+        <p>
+            La teva comanda està preparada.
+        </p>
+
+        <button id="goReservations">
+            Veure reserves
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RESERVES -->
+<!-- ========================================= -->
+
+<section id="reservations" class="screen">
+
+    <div class="container">
+
+        <h2>Les meves reserves</h2>
+
+        <div id="reservationsContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FAVORITS -->
+<!-- ========================================= -->
+
+<section id="favorites" class="screen">
+
+    <div class="container">
+
+        <h2>Favorits</h2>
+
+        <div id="favoritesContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- NOTIFICACIONS -->
+<!-- ========================================= -->
+
+<section id="notifications" class="screen">
+
+    <div class="container">
+
+        <h2>Notificacions</h2>
+
+        <div id="notificationsContainer">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PERFIL -->
+<!-- ========================================= -->
+
+<section id="profile" class="screen">
+
+    <div class="container">
+
+        <div class="profile-header">
+
+            <div class="avatar">
+                👤
+            </div>
+
+            <h2>Usuari EcoFood</h2>
+
+        </div>
+
+        <div class="profile-menu">
+
+            <button id="openStats">
+                Estadístiques
+            </button>
+
+            <button id="openSettings">
+                Ajustos
+            </button>
+
+            <button id="openHelp">
+                Ajuda
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ESTADÍSTIQUES -->
+<!-- ========================================= -->
+
+<section id="stats" class="screen">
+
+    <div class="container">
+
+        <h2>Les meves estadístiques</h2>
+
+        <div class="stat-card">
+
+            <h3 id="foodSaved">
+                0 kg
+            </h3>
+
+            <p>Menjar salvat</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="co2Saved">
+                0 kg
+            </h3>
+
+            <p>CO₂ estalviat</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3 id="moneySaved">
+                0 €
+            </h3>
+
+            <p>Diners estalviats</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- AJUSTOS -->
+<!-- ========================================= -->
+
+<section id="settings" class="screen">
+
+    <div class="container">
+
+        <h2>Ajustos</h2>
+
+        <label>
+            Notificacions
+            <input type="checkbox" checked>
+        </label>
+
+        <label>
+            Compartir ubicació
+            <input type="checkbox" checked>
+        </label>
+
+        <label>
+            Mode fosc
+            <input type="checkbox" id="darkModeToggle">
+        </label>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- AJUDA -->
+<!-- ========================================= -->
+
+<section id="help" class="screen">
+
+    <div class="container">
+
+        <h2>Ajuda</h2>
+
+        <div class="faq">
+
+            <h4>Com funciona EcoFood?</h4>
+
+            <p>
+                Reserva lots de menjar que
+                no s'han venut durant el dia.
+            </p>
+
+        </div>
+
+        <div class="faq">
+
+            <h4>Com recullo una reserva?</h4>
+
+            <p>
+                Ves al comerç dins la franja
+                horària indicada.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- NAVEGACIÓ INFERIOR -->
+<!-- ========================================= -->
 
 <nav class="bottom-nav">
-<button>Inicio</button>
-<button>Todos</button>
-<button>Perfil</button>
+
+    <button data-screen="home">
+        🏠
+        <span>Inici</span>
+    </button>
+
+    <button data-screen="reservations">
+        📅
+        <span>Reserves</span>
+    </button>
+
+    <button data-screen="favorites">
+        ❤️
+        <span>Favorits</span>
+    </button>
+
+    <button data-screen="profile">
+        👤
+        <span>Perfil</span>
+    </button>
+
 </nav>
 
 <script src="script.js"></script>
 
 </body>
 </html>
+```
+
