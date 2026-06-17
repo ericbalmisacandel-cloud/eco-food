@@ -1,12 +1,8 @@
 /* =========================================
-   ECOFOOD - STYLE.CSS
-   Disseny modern tipus app real
+   ECOFOOD - STYLE.CSS (CORREGIDO PRO)
 ========================================= */
 
-/* =========================
-   RESET
-========================= */
-
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -15,22 +11,40 @@
 }
 
 body {
-    background: #f6f7fb;
-    color: #222;
+    background: #eaeaea;
+    display: flex;
+    justify-content: center;
 }
 
 /* =========================
-   PANTALLES
+   PANTALLAS (FIX IMPORTANTE)
+   👉 SIN display:none (esto arregla todo)
 ========================= */
 
 .screen {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateX(30px);
+    
+    width: 420px;
     min-height: 100vh;
-    padding: 20px;
+
+    background: #f6f7fb;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: all 0.35s ease;
 }
 
+/* pantalla activa (ANIMACIÓN REAL) */
 .active-screen {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateX(0);
 }
 
 /* =========================
@@ -51,11 +65,6 @@ body {
     margin-top: 10px;
 }
 
-.splash-content p {
-    margin-top: 10px;
-    opacity: 0.9;
-}
-
 .logo-container {
     font-size: 60px;
 }
@@ -68,25 +77,21 @@ body {
     background: white;
     color: #27ae60;
     font-weight: bold;
-    cursor: pointer;
 }
 
 /* =========================
-   CONTAINERS
+   CONTAINER
 ========================= */
 
 .container {
     max-width: 500px;
     margin: auto;
+    padding: 20px;
 }
 
 /* =========================
-   AUTH (LOGIN / REGISTER)
+   INPUTS / BOTONES
 ========================= */
-
-.auth-container {
-    margin-top: 60px;
-}
 
 input {
     width: 100%;
@@ -94,7 +99,6 @@ input {
     margin: 10px 0;
     border-radius: 10px;
     border: 1px solid #ddd;
-    outline: none;
 }
 
 button {
@@ -109,31 +113,6 @@ button:not(.filter-btn):not(.bottom-nav button) {
     background: #2ecc71;
     color: white;
     font-weight: bold;
-    margin-top: 10px;
-}
-
-/* =========================
-   LINKS
-========================= */
-
-.link {
-    color: #27ae60;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* =========================
-   ONBOARDING
-========================= */
-
-#onboarding {
-    text-align: center;
-    padding-top: 80px;
-}
-
-.onboarding-image {
-    font-size: 80px;
-    margin: 30px 0;
 }
 
 /* =========================
@@ -141,30 +120,22 @@ button:not(.filter-btn):not(.bottom-nav button) {
 ========================= */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header h2 {
-    font-size: 26px;
+    margin-bottom: 15px;
 }
 
 .search-section input {
-    margin-top: 10px;
     border-radius: 20px;
 }
 
 /* =========================
-   FILTRES
+   FILTROS
 ========================= */
 
 .filters {
     display: flex;
     gap: 10px;
-    margin: 15px 0;
     overflow-x: auto;
+    margin: 10px 0;
 }
 
 .filter-btn {
@@ -172,8 +143,6 @@ button:not(.filter-btn):not(.bottom-nav button) {
     border-radius: 20px;
     border: none;
     background: #eee;
-    cursor: pointer;
-    white-space: nowrap;
 }
 
 .active-filter {
@@ -185,53 +154,25 @@ button:not(.filter-btn):not(.bottom-nav button) {
    OFERTES
 ========================= */
 
-.offers-section h3 {
-    margin: 15px 0;
-}
-
 #offersContainer {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 12px;
 }
 
 .offer-card {
     background: white;
-    border-radius: 15px;
     padding: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.2s;
-}
-
-.offer-card:hover {
-    transform: scale(1.02);
-}
-
-.offer-card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.offer-card h4 {
-    margin-top: 10px;
 }
 
 /* =========================
-   DETALL OFERTA
+   DETALL
 ========================= */
 
 .detail-image {
     width: 100%;
     border-radius: 15px;
-    margin: 15px 0;
-}
-
-.backBtn {
-    background: none;
-    border: none;
-    font-size: 18px;
-    margin-bottom: 10px;
-    cursor: pointer;
 }
 
 /* =========================
@@ -241,8 +182,8 @@ button:not(.filter-btn):not(.bottom-nav button) {
 .quantity-selector {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;
+    align-items: center;
     margin: 40px 0;
 }
 
@@ -250,34 +191,6 @@ button:not(.filter-btn):not(.bottom-nav button) {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    font-size: 22px;
-}
-
-/* =========================
-   PAGAMENT
-========================= */
-
-#paymentSummary {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 15px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-label {
-    display: block;
-    margin: 10px 0;
-}
-
-/* =========================
-   CONFIRMACIÓ
-========================= */
-
-.success-icon {
-    font-size: 70px;
-    text-align: center;
-    margin-top: 50px;
 }
 
 /* =========================
@@ -290,24 +203,6 @@ label {
     padding: 12px;
     margin: 10px 0;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-/* =========================
-   PERFIL
-========================= */
-
-.profile-header {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.avatar {
-    font-size: 60px;
-}
-
-.profile-menu button {
-    margin-top: 10px;
 }
 
 /* =========================
@@ -317,35 +212,9 @@ label {
 .stat-card {
     background: white;
     padding: 20px;
-    margin: 15px 0;
     border-radius: 15px;
+    margin: 15px 0;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-/* =========================
-   AJUSTOS
-========================= */
-
-#settings label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
-}
-
-/* =========================
-   HELP
-========================= */
-
-.faq {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
 }
 
 /* =========================
@@ -355,27 +224,24 @@ label {
 .bottom-nav {
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+
     background: white;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
+
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
 
 .bottom-nav button {
     background: none;
     border: none;
-    font-size: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #555;
-}
-
-.bottom-nav button span {
-    font-size: 12px;
 }
 
 /* =========================
@@ -387,22 +253,14 @@ label {
     color: white;
 }
 
+.dark-mode .screen {
+    background: #121212;
+}
+
 .dark-mode .offer-card,
 .dark-mode .stat-card,
 .dark-mode .reservation-card,
-.dark-mode .favorite-card,
-.dark-mode #paymentSummary,
-.dark-mode .faq {
+.dark-mode .favorite-card {
     background: #1e1e1e;
     color: white;
-}
-
-.dark-mode .bottom-nav {
-    background: #1e1e1e;
-}
-
-.dark-mode input {
-    background: #2a2a2a;
-    color: white;
-    border: 1px solid #444;
 }
