@@ -1,5 +1,5 @@
 /* =========================================
-   ECOFOOD - STYLE.CSS (CORREGIDO PRO)
+   ECOFOOD - STYLE.CSS (CLEAN VERSION)
 ========================================= */
 
 /* RESET */
@@ -17,8 +17,8 @@ body {
 }
 
 /* =========================
-   PANTALLAS (FIX IMPORTANTE)
-   👉 SIN display:none (esto arregla todo)
+   PANTALLAS
+   (ANIMACIÓN TIPO APP)
 ========================= */
 
 .screen {
@@ -26,7 +26,7 @@ body {
     top: 0;
     left: 50%;
     transform: translateX(-50%) translateX(30px);
-    
+
     width: 420px;
     min-height: 100vh;
 
@@ -39,7 +39,6 @@ body {
     transition: all 0.35s ease;
 }
 
-/* pantalla activa (ANIMACIÓN REAL) */
 .active-screen {
     opacity: 1;
     visibility: visible;
